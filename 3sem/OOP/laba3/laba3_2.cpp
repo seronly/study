@@ -7,6 +7,7 @@
 #include <string>
 #include <algorithm>
 #include <cassert>
+#include <ctime>
 using namespace std;
 
 struct date
@@ -14,15 +15,12 @@ struct date
     int year, month, day;
 };
 
-template <class T>
-T days_left(T year, T month, T day)
+template <class int_type, class date_type>
+int_type days_left(T year, T month, T day)
 {
+    T n = 0;
     return n;
 }
-// T days_left(T year, T month, T day)
-// {
-//     return n;
-// }
 
 int main()
 {
@@ -32,6 +30,12 @@ int main()
 
     date data1, data2;
 
+    time_t t;
+    struct tm *timeN;
+    time(&t);
+    timeN = localtime(&t);
+    int yearNow = timeN->tm_year + 1900;
+
     cout << "¬ведите год, мес€ц и день: ";
     cin >> data1.year;
     cin >> data1.month;
@@ -40,7 +44,7 @@ int main()
     cout << "\n¬ведите мес€ц и день: ";
     cin >> data2.month;
     cin >> data2.day;
-    cout << "ƒо конца мес€ца осталось: " << days_left(2020, data2.month, data2.day) << " дней" << endl;
+    cout << "ƒо конца мес€ца осталось: " << days_left(yearNow, data2.month, data2.day) << " дней" << endl;
 
     return 0;
 }
