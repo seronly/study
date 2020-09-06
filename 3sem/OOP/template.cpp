@@ -1,7 +1,7 @@
 #include <iomanip>   // флаги ввода/вывода
 #include <fstream>   // работа с файлами
 #include <cmath>     // математика
-#include <string>    // строки
+#include <cstring>   // строки
 #include <algorithm> // алгоритмы
 
 #include <iostream>
