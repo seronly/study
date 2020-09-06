@@ -1,4 +1,4 @@
-ï»¿#include <iostream>
+#include <iostream>
 #include <iomanip>
 #include <fstream>
 #include <cmath>
@@ -8,157 +8,237 @@
 #include <algorithm>
 #include <cassert>
 using namespace std;
- struct Staffs {
-	 char surname[20], name[20], patrname[20];
-	 char pos[20];
-	 int year;
-	 float zarpl;
+struct Staffs
+{
+	char surname[20], name[20], patrname[20];
+	char pos[20];
+	int year;
+	float zarpl;
 } sf;
- struct Staffs person[100];
- struct Staffs temp;
- int counter = 0;
+struct Staffs person[100];
+struct Staffs temp;
+int counter = 0;
 
- int menu() {
-	 system("cls");
-	 int enter;
-	 cout << "\t\tĞœĞµĞ½Ñ" << endl;
-	 cout << "--------------------------------" << endl;
-	 cout << "1. Ğ”Ğ¾Ğ±Ğ°Ğ²Ğ»ĞµĞ½Ğ¸Ğµ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ°" << endl;
-	 cout << "2. Ğ¡Ğ¾Ñ€Ñ‚Ğ¸Ñ€Ğ¾Ğ²ĞºĞ° ÑĞ¿Ğ¸ÑĞºĞ° ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ¾Ğ² Ğ¿Ğ¾ Ñ„Ğ°Ğ¼Ğ¸Ğ»Ğ¸Ğ¸" << endl;
-	 cout << "3. ĞŸĞ¾Ğ¸ÑĞº ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ¾Ğ² Ğ¿Ğ¾ Ñ„Ğ°Ğ¼Ğ¸Ğ»Ğ¸Ğ¸" << endl;
-	 cout << "4. Ğ˜Ğ·Ğ¼ĞµĞ½ĞµĞ½Ğ¸Ğµ Ğ´Ğ°Ğ½Ğ½Ñ‹Ñ… Ğ¾ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞµ" << endl;
-	 cout << "5. Ğ£Ğ´Ğ°Ğ»ĞµĞ½Ğ¸Ğµ Ğ´Ğ°Ğ½Ğ½Ñ‹Ñ… Ğ¾ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞµ" << endl;
-	 cout << "6. Ğ’Ñ‹Ğ²Ğ¾Ğ´ Ğ½Ğ° ÑĞºÑ€Ğ°Ğ½ ÑĞ¿Ğ¸ÑĞ¾Ğº ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ¾Ğ²" << endl;
-	 cout << "7. Ğ’Ñ‹Ñ…Ğ¾Ğ´" << endl;
-	 cin >> enter;
-	 return enter;
- }
- void input() {
-	 system("cls");
-	 if (counter < 100) {
-		 cout << "Ğ¡Ğ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸Ğº â„–" << counter + 1 << endl;
-		 cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ñ„Ğ°Ğ¼Ğ¸Ğ»Ğ¸Ñ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ°: "; cin >> person[counter].surname;
-		 cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ¸Ğ¼Ñ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ°: "; cin >> person[counter].name;
-		 cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ¾Ñ‚Ñ‡ĞµÑÑ‚Ğ²Ğ¾ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ°: "; cin >> person[counter].patrname;
-		 cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ´Ğ¾Ğ»Ğ¶Ğ½Ğ¾ÑÑ‚ÑŒ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ°: "; cin >> person[counter].pos;
-		 cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ³Ğ¾Ğ´ Ñ€Ğ¾Ğ¶Ğ´ĞµĞ½Ğ¸Ñ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ°: "; cin >> person[counter].year;
-		 cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ·Ğ°Ñ€Ğ¿Ğ»Ğ°Ñ‚Ñƒ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ°: "; cin >> person[counter].zarpl;
-		 counter++;
-	 }
-	 else cout << "Ğ”Ğ¾Ğ±Ğ°Ğ²Ğ»ĞµĞ½Ğ¾ Ğ¼Ğ°ĞºÑĞ¸Ğ¼Ğ°Ğ»ÑŒĞ½Ğ¾Ğµ ĞºĞ¾Ğ»-Ğ²Ğ¾ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ¾Ğ²!" << endl;
-	 system("pause");
- }
- void sort() {
-	 system("cls");
-	 for (int i = 0; i < counter - 1; i++) {
-		 for (int j = i + 1; j < counter; j++) {
-			 if (strcmp(person[i].surname, person[j].surname) > 0) {
-				 temp = person[i];
-				 person[i] = person[j];
-				 person[j] = temp;
-			 }
-		 }
-	 }
-	 cout << "Ğ¡Ğ¾Ñ€Ñ‚Ğ¸Ñ€Ğ¾Ğ²ĞºĞ° Ğ¿Ñ€Ğ¾ÑˆĞ»Ğ° ÑƒÑĞ¿ĞµÑˆĞ½Ğ¾!\n";
-	 system("pause");
- }
- //ĞĞ• Ğ ĞĞ‘Ğ˜Ğ¢ ĞŸĞĞ˜Ğ¡Ğš
- void find() {
-	 system("cls");
-	 char fs[20];
-	 cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ñ„Ğ°Ğ¼Ğ¸Ğ»Ğ¸Ñ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ°: "; cin >> fs;
-	 for (int i = 0; i < counter; i++) {
-		 cout << "ĞŸÑ€Ğ¾Ğ²ĞµÑ€ÑĞµĞ¼Ğ°Ñ Ñ„Ğ°Ğ¼Ğ¸Ğ»Ğ¸Ñ: " << person[i].surname << "\tĞ¤Ğ°Ğ¼Ğ¸Ğ»Ğ¸Ñ Ğ¿Ğ¾ Ğ·Ğ°Ğ¿Ñ€Ğ¾ÑÑƒ: " << fs << endl;
-		 if (person[i].surname == fs) {
-			 cout << i + 1 << ". "
-				 << person[i].surname << " "
-				 << person[i].name << " "
-				 << person[i].patrname << " "
-				 << "Ğ”Ğ¾Ğ»Ğ¶Ğ½Ğ¾ÑÑ‚ÑŒ: " << person[i].pos << " "
-				 << person[i].year << " Ğ³. "
-				 << "Ğ—/Ğ¿: " << person[i].zarpl << endl;
-			
-		 }
-		 cout << "ĞŸÑ€Ğ¾Ğ²ĞµÑ€ĞºĞ° Ğ¸Ğ´ĞµÑ‚...\n";
-	 }
-	 cout << "\nĞŸĞ¾ Ñ„Ğ°Ğ¼Ğ¸Ğ»Ğ¸Ğ¸ " << fs << " Ğ½Ğ¸ĞºÑ‚Ğ¾ Ğ½Ğµ Ğ½Ğ°Ğ¹Ğ´ĞµĞ½" << endl;
-	 system("pause");
- }
- void change() {
-	 system("cls");
-	 int num;
-	 int check;
-	 cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ½Ğ¾Ğ¼ĞµÑ€ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ°: "; cin >> num;
-	 do {
-		 system("cls");
-		 cout << person[num - 1].surname << " "
-			 << person[num - 1].name << " " 
+int menu()
+{
+	system("cls");
+	int enter;
+	cout << "\t\tÌåíş" << endl;
+	cout << "--------------------------------" << endl;
+	cout << "1. Äîáàâëåíèå ñîòğóäíèêà" << endl;
+	cout << "2. Ñîğòèğîâêà ñïèñêà ñîòğóäíèêîâ ïî ôàìèëèè" << endl;
+	cout << "3. Ïîèñê ñîòğóäíèêîâ ïî ôàìèëèè" << endl;
+	cout << "4. Èçìåíåíèå äàííûõ î ñîòğóäíèêå" << endl;
+	cout << "5. Óäàëåíèå äàííûõ î ñîòğóäíèêå" << endl;
+	cout << "6. Âûâîä íà ıêğàí ñïèñîê ñîòğóäíèêîâ" << endl;
+	cout << "7. Âûõîä" << endl;
+	cin >> enter;
+	return enter;
+}
+void input()
+{
+	system("cls");
+	if (counter < 100)
+	{
+		cout << "Ñîòğóäíèê ¹" << counter + 1 << endl;
+		cout << "Ââåäèòå ôàìèëèş ñîòğóäíèêà: ";
+		cin >> person[counter].surname;
+		cout << "Ââåäèòå èìÿ ñîòğóäíèêà: ";
+		cin >> person[counter].name;
+		cout << "Ââåäèòå îò÷åñòâî ñîòğóäíèêà: ";
+		cin >> person[counter].patrname;
+		cout << "Ââåäèòå äîëæíîñòü ñîòğóäíèêà: ";
+		cin >> person[counter].pos;
+		cout << "Ââåäèòå ãîä ğîæäåíèÿ ñîòğóäíèêà: ";
+		cin >> person[counter].year;
+		cout << "Ââåäèòå çàğïëàòó ñîòğóäíèêà: ";
+		cin >> person[counter].zarpl;
+		counter++;
+	}
+	else
+		cout << "Äîáàâëåíî ìàêñèìàëüíîå êîë-âî ñîòğóäíèêîâ!" << endl;
+	system("pause");
+}
+void sort()
+{
+	system("cls");
+	for (int i = 0; i < counter - 1; i++)
+	{
+		for (int j = i + 1; j < counter; j++)
+		{
+			if (strcmp(person[i].surname, person[j].surname) > 0)
+			{
+				temp = person[i];
+				person[i] = person[j];
+				person[j] = temp;
+			}
+		}
+	}
+	cout << "Ñîğòèğîâêà ïğîøëà óñïåøíî!\n";
+	system("pause");
+}
+void find()
+{
+	system("cls");
+	char fs[20];
+	bool check = true;
+	if (!counter)
+	{
+		cout << "Ñïèñîê ïóñò!" << endl;
+		system("pause");
+		return;
+	}
+	cout << "Ââåäèòå ôàìèëèş ñîòğóäíèêà: ";
+	cin >> fs;
+
+	for (int i = 0; i < counter; i++)
+	{
+		if (strcmp((*(person + i)).surname, fs) == 0)
+		{
+			cout << i + 1 << ". "
+				 << (*(person + i)).surname << " "
+				 << (*(person + i)).name << " "
+				 << (*(person + i)).patrname << " "
+				 << "Äîëæíîñòü: " << (*(person + i)).pos << " "
+				 << (*(person + i)).year << " ã. "
+				 << "Ç/ï: " << (*(person + i)).zarpl << endl;
+			check = false;
+		}
+	}
+	if (check)
+	{
+		cout << "Íè÷åãî íå íàéäåíî!" << endl;
+	}
+	system("pause");
+}
+void change()
+{
+	system("cls");
+	int num;
+	int check;
+	cout << "Ââåäèòå íîìåğ ñîòğóäíèêà: ";
+	cin >> num;
+	do
+	{
+		system("cls");
+		cout << person[num - 1].surname << " "
+			 << person[num - 1].name << " "
 			 << person[num - 1].patrname << " "
-			 << "Ğ”Ğ¾Ğ»Ğ¶Ğ½Ğ¾ÑÑ‚ÑŒ: " << person[num - 1].pos << " "
-			 << person[num - 1].year << "Ğ³. "
-			 << "Ğ—/Ğ¿: " << person[num - 1].zarpl << " Ñ€ÑƒĞ±." << endl;
-		 cout << "-------------------------------------------" << endl;
-		 cout << "\t\tĞ˜Ğ·Ğ¼ĞµĞ½Ğ¸Ñ‚ÑŒ" << endl;
-		 cout << "-------------------------------------------" << endl;
-		 cout << "1. Ğ¤Ğ°Ğ¼Ğ¸Ğ»Ğ¸Ñ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ°" << endl;
-		 cout << "2. Ğ˜Ğ¼Ñ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ°" << endl;
-		 cout << "3. ĞÑ‚Ñ‡ĞµÑÑ‚Ğ²Ğ¾ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ°" << endl;
-		 cout << "4. Ğ”Ğ¾Ğ»Ğ¶Ğ½Ğ¾ÑÑ‚ÑŒ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ°" << endl;
-		 cout << "5. Ğ“Ğ¾Ğ´ Ñ€Ğ¾Ğ¶Ğ´ĞµĞ½Ğ¸Ñ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ°" << endl;
-		 cout << "6. Ğ—Ğ°Ñ€Ğ¿Ğ»Ğ°Ñ‚Ñƒ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ°" << endl;
-		 cout << "7. Ğ’Ñ‹Ñ…Ğ¾Ğ´" << endl;
-		 cin >> check;
-		 switch (check) {
-			case 1: cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ñ„Ğ°Ğ¼Ğ¸Ğ»Ğ¸Ñ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ°: "; cin >> person[num - 1].surname; break;
-			case 2: cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ¸Ğ¼Ñ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ°: "; cin >> person[num - 1].name; break;
-			case 3: cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ¾Ñ‚Ñ‡ĞµÑÑ‚Ğ²Ğ¾ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ°: "; cin >> person[num - 1].patrname; break;
-			case 4:	cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ´Ğ¾Ğ»Ğ¶Ğ½Ğ¾ÑÑ‚ÑŒ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ°: "; cin >> person[num - 1].pos; break;
-			case 5:	cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ³Ğ¾Ğ´ Ñ€Ğ¾Ğ¶Ğ´ĞµĞ½Ğ¸Ñ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ°: "; cin >> person[num - 1].year; break;
-			case 6: cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ·Ğ°Ñ€Ğ¿Ğ»Ğ°Ñ‚Ñƒ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ°: "; cin >> person[num - 1].zarpl; break;
-			case 7: system("pause"); return;
-			default: cout << "ĞĞµ Ğ²ĞµÑ€Ğ½Ñ‹Ğ¹ Ğ·Ğ°Ğ¿Ñ€Ğ¾Ñ.\n";
-		 }
-	 } while (true);
-	 system("pause");
- }
- void del() {
-	 system("cls");
-	 int num;
-	 cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ½Ğ¾Ğ¼ĞµÑ€ ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ°, Ğ´Ğ°Ğ½Ğ½Ñ‹Ğµ Ğ¾ ĞºĞ¾Ñ‚Ğ¾Ñ€Ğ¾Ğ¼ Ğ½ÑƒĞ¶Ğ½Ğ¾ ÑƒĞ´Ğ°Ğ»Ğ¸Ñ‚ÑŒ: "; cin >> num;
-	 for (int i = (num - 1); i < counter; i++) {
-		 person[i] = person[i + 1];
-	 }
-	 counter--;
-	 cout << "Ğ”Ğ°Ğ½Ğ½Ñ‹Ğµ ÑƒÑĞ¿ĞµÑˆĞ½Ğ¾ ÑƒĞ´Ğ°Ğ»ĞµĞ½Ñ‹!\nĞ¡Ğ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ¾Ğ²: " << counter;
- }
- void output() {
-	 system("cls");
-	 if (counter == 0) { cout << "Ğ¡Ğ¿Ğ¸ÑĞ¾Ğº ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ¾Ğ² Ğ¿ÑƒÑÑ‚!" << endl;  system("pause"); return; }
-	 cout << "Ğ¡Ğ¿Ğ¸ÑĞ¾Ğº ÑĞ¾Ñ‚Ñ€ÑƒĞ´Ğ½Ğ¸ĞºĞ¾Ğ²: " << endl;
-	 for (int i = 0; i < counter; i++) {
-		 cout << i + 1 << ". "
+			 << "Äîëæíîñòü: " << person[num - 1].pos << " "
+			 << person[num - 1].year << "ã. "
+			 << "Ç/ï: " << person[num - 1].zarpl << " ğóá." << endl;
+		cout << "-------------------------------------------" << endl;
+		cout << "\t\tÈçìåíèòü" << endl;
+		cout << "-------------------------------------------" << endl;
+		cout << "1. Ôàìèëèş ñîòğóäíèêà" << endl;
+		cout << "2. Èìÿ ñîòğóäíèêà" << endl;
+		cout << "3. Îò÷åñòâî ñîòğóäíèêà" << endl;
+		cout << "4. Äîëæíîñòü ñîòğóäíèêà" << endl;
+		cout << "5. Ãîä ğîæäåíèÿ ñîòğóäíèêà" << endl;
+		cout << "6. Çàğïëàòó ñîòğóäíèêà" << endl;
+		cout << "7. Âûõîä" << endl;
+		cin >> check;
+		switch (check)
+		{
+		case 1:
+			cout << "Ââåäèòå ôàìèëèş ñîòğóäíèêà: ";
+			cin >> person[num - 1].surname;
+			break;
+		case 2:
+			cout << "Ââåäèòå èìÿ ñîòğóäíèêà: ";
+			cin >> person[num - 1].name;
+			break;
+		case 3:
+			cout << "Ââåäèòå îò÷åñòâî ñîòğóäíèêà: ";
+			cin >> person[num - 1].patrname;
+			break;
+		case 4:
+			cout << "Ââåäèòå äîëæíîñòü ñîòğóäíèêà: ";
+			cin >> person[num - 1].pos;
+			break;
+		case 5:
+			cout << "Ââåäèòå ãîä ğîæäåíèÿ ñîòğóäíèêà: ";
+			cin >> person[num - 1].year;
+			break;
+		case 6:
+			cout << "Ââåäèòå çàğïëàòó ñîòğóäíèêà: ";
+			cin >> person[num - 1].zarpl;
+			break;
+		case 7:
+			system("pause");
+			return;
+		default:
+			cout << "Íå âåğíûé çàïğîñ.\n";
+		}
+	} while (true);
+	system("pause");
+}
+void del()
+{
+	system("cls");
+	int num;
+	cout << "Ââåäèòå íîìåğ ñîòğóäíèêà, äàííûå î êîòîğîì íóæíî óäàëèòü: ";
+	cin >> num;
+	for (int i = (num - 1); i < counter; i++)
+	{
+		person[i] = person[i + 1];
+	}
+	counter--;
+	cout << "Äàííûå óñïåøíî óäàëåíû!\nÑîòğóäíèêîâ: " << counter;
+}
+void output()
+{
+	system("cls");
+	if (counter == 0)
+	{
+		cout << "Ñïèñîê ñîòğóäíèêîâ ïóñò!" << endl;
+		system("pause");
+		return;
+	}
+	cout << "Ñïèñîê ñîòğóäíèêîâ: " << endl;
+	for (int i = 0; i < counter; i++)
+	{
+		cout << i + 1 << ". "
 			 << person[i].surname << " "
 			 << person[i].name << " "
 			 << person[i].patrname << " "
-			 << "Ğ”Ğ¾Ğ»Ğ¶Ğ½Ğ¾ÑÑ‚ÑŒ: " << person[i].pos << " "
-			 << person[i].year << "Ğ³. "
-			 << "Ğ—/Ğ¿: " << person[i].zarpl << " Ñ€ÑƒĞ±." << endl;
-	 }
-	 system("pause");
- }
+			 << "Äîëæíîñòü: " << person[i].pos << " "
+			 << person[i].year << "ã. "
+			 << "Ç/ï: " << person[i].zarpl << " ğóá." << endl;
+	}
+	system("pause");
+}
 int main()
 {
-	SetConsoleCP(1251); SetConsoleOutputCP(1251); setlocale(LC_ALL, "Russian");
-	while (true) {
-		switch (menu()) {
-		case 1: input(); break;
-		case 2: sort(); break;
-		case 3: find(); break;
-		case 4: change(); break;
-		case 5: del(); break;
-		case 6: output(); break;
-		case 7: return 0;
-		default: cout << "ĞĞµ Ğ²ĞµÑ€Ğ½Ñ‹Ğ¹ Ğ·Ğ°Ğ¿Ñ€Ğ¾Ñ.\n";
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	setlocale(LC_ALL, "Russian");
+	while (true)
+	{
+		switch (menu())
+		{
+		case 1:
+			input();
+			break;
+		case 2:
+			sort();
+			break;
+		case 3:
+			find();
+			break;
+		case 4:
+			change();
+			break;
+		case 5:
+			del();
+			break;
+		case 6:
+			output();
+			break;
+		case 7:
+			return 0;
+		default:
+			cout << "Íå âåğíûé çàïğîñ.\n";
 		}
 	}
 
