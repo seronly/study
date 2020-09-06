@@ -64,14 +64,17 @@ int days_left(int year, int month, int day)
 
 int days_left(int month, int day)
 {
-    int n = 0;
+    int n = 0, yearNow = 2020;
     switch (month)
     {
     case 1:
         n = 31;
         break;
     case 2:
-        n = 28;
+        if (yearNow % 4 == 0 && yearNow % 100 != 0 || yearNow % 400 == 0)
+            n = 29;
+        else
+            n = 28;
         break;
     case 3:
         n = 31;
