@@ -4,6 +4,7 @@
 #include <Windows.h>
 #include <locale>
 #include <string>
+#include <ctime>
 using namespace std;
 
 struct date
@@ -64,7 +65,13 @@ int days_left(int year, int month, int day)
 
 int days_left(int month, int day)
 {
-    int n = 0, yearNow = 2020;
+    time_t t;
+    struct tm *timeN;
+    time(&t);
+    timeN = localtime(&t);
+    int yearNow = timeN->tm_year + 1900;
+
+    int n = 0;
     switch (month)
     {
     case 1:
@@ -119,13 +126,17 @@ int main()
     setlocale(LC_ALL, "Russian");
     date data1, data2;
 
-    cout << "¬ведите год, мес€ц и день: ";
+    cout << "ѕерегрузка функции с 3 параметрами: \n¬ведите год: ";
     cin >> data1.year;
+    cout << "ћес€ц: ";
     cin >> data1.month;
+    cout << "ƒень: ";
     cin >> data1.day;
-    cout << "ƒо конца мес€ца осталось: " << days_left(data1.year, data1.month, data1.day) << " дней" << endl;
-    cout << "\n¬ведите мес€ц и день: ";
+    cout << "ƒо конца мес€ца осталось: " << days_left(data1.year, data1.month, data1.day) << " дней\n"
+         << endl;
+    cout << "ѕерегрузка функции с 2 параметрами: \n¬ведите мес€ц: ";
     cin >> data2.month;
+    cout << "ƒень: ";
     cin >> data2.day;
     cout << "ƒо конца мес€ца осталось: " << days_left(data2.month, data2.day) << " дней" << endl;
 
