@@ -1,11 +1,12 @@
+#include <iomanip>   // флаги ввода/вывода
+#include <fstream>   // работа с файлами
+#include <cmath>     // математика
+#include <string>    // строки
+#include <algorithm> // алгоритмы
+
 #include <iostream>
-#include <iomanip>
-#include <fstream>
-#include <cmath>
 #include <Windows.h>
 #include <locale>
-#include <string>
-#include <algorithm>
 #include <cassert>
 using namespace std;
 
