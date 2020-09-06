@@ -116,8 +116,7 @@ int main()
     setlocale(LC_ALL, "Russian");
     date data1, data2;
 
-    cout
-        << "¬ведите год, мес€ц и день: ";
+    cout << "¬ведите год, мес€ц и день: ";
     cin >> data1.year;
     cin >> data1.month;
     cin >> data1.day;
