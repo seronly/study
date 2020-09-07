@@ -5,8 +5,13 @@
 #include <cstring>
 using namespace std;
 
-int counter = 100;
 //  Пункт назначения, Номер рейса, Тип самолета, Время вылета, Дни недели.
+
+// Aeroflot: Пункт назначения, Номер рейса, Тип самолета, Время вылета, Дни недели. Создать массив объектов. Вывести:
+// а) список рейсов для заданного пункта назначения; +
+// б) список рейсов для заданного дня недели;
+// в) список рейсов для заданного дня недели, время вылета для которых больше заданного.
+
 struct timeS
 {
     int hour, minute;
@@ -20,16 +25,19 @@ class Airbus
     string weekday;
 
 public:
-    int menu();
     Airbus();
     void show();
-    string getDP();
-    string getWeekday();
+    string GetDP();
+    string GetWeekday();
+    timeS GetTime();
 };
 
 Airbus::Airbus() //конструктор
 {
-    cout << "Введите данные: " << endl;
+    system("cls");
+
+    cout << "Введите данные для рейса"
+         << "\n-------------------------------------------------------- " << endl;
     cout << "Пункт назначения: ";
     cin >> destPoint;
     cout << "Номер рейса: ";
@@ -53,49 +61,72 @@ void Airbus::show()
     cout << "День недели: " << weekday << endl;
 }
 
-string Airbus::getDP() { return destPoint; } // геттер
+string Airbus::GetDP() { return destPoint; } // геттер
 
-string Airbus::getWeekday() { return weekday; } //геттер
+string Airbus::GetWeekday() { return weekday; } //геттер
+
+timeS Airbus::GetTime() { return timeOut; } //геттер
 
 void listDP(Airbus list[], int n)
 {
+    cout << "\nCписок рейсов для заданного пункта назначения" << endl;
+
     int i;
     string DP;
     cout << "Введите пункт назначения: ";
     cin >> DP;
     for (i = 0; i < n; i++)
     {
-        if (list[i].getDP() == DP)
+        if (list[i].GetDP() == DP)
         {
+            cout << "==============================" << endl;
             list[i].show();
         }
     }
 }
 
-int Airbus::menu()
+void listWD(Airbus list[], int n)
 {
-    system("cls");
-    int enter;
-    cout << "1. Добавление рейса" << endl;
-    cout << "2. Сортировка списка сотрудников по фамилии" << endl;
-    cout << "3. Поиск сотрудников по фамилии" << endl;
-    cout << "4. Изменение данных о сотруднике" << endl;
-    cout << "5. Удаление данных о сотруднике" << endl;
-    cout << "6. Вывод на экран список сотрудников" << endl;
-    cout << "7. Выход" << endl;
-    cin >> enter;
-    return enter;
+    int i;
+    string DP;
+
+    cout << "\nCписок рейсов для заданного дня недели" << endl;
+
+    cout << "Введите день недели: ";
+    cin >> DP;
+
+    for (i = 0; i < n; i++)
+    {
+        if (list[i].GetWeekday() == DP)
+        {
+            cout << "==============================" << endl;
+            list[i].show();
+        }
+    }
 }
 
-void input()
+void listTime(Airbus list[], int n)
 {
-    system("cls");
-    if (counter < 100)
+    int i;
+    string DP;
+    timeS timeMore;
+
+    cout << "\nCписок рейсов для заданного дня недели, время вылета для которых больше заданного." << endl;
+
+    cout << "Введите день недели: ";
+    cin >> DP;
+    cout << "Введите время вылета\nЧасы: ";
+    cin >> timeMore.hour;
+    cout << "Минуты: ";
+    cin >> timeMore.minute;
+    for (i = 0; i < n; i++)
     {
+        if (list[i].GetWeekday() == DP)
+        {
+            cout << "==============================" << endl;
+            list[i].show();
+        }
     }
-    else
-        cout << "Добавлено максимальное кол-во рейсов!" << endl;
-    system("pause");
 }
 
 int main()
@@ -118,6 +149,7 @@ int main()
     }
 
     listDP(list, n);
+    listWD(list, n);
 
     return 0;
 }
