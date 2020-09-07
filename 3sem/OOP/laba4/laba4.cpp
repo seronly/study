@@ -26,7 +26,8 @@ public:
     string getDP();
     string getWeekday();
 };
-Airbus::Airbus()
+
+Airbus::Airbus() //конструктор
 {
     cout << "Введите данные: " << endl;
     cout << "Пункт назначения: ";
@@ -42,6 +43,7 @@ Airbus::Airbus()
     cout << "День недели: ";
     cin >> weekday;
 }
+
 void Airbus::show()
 {
     cout << "Пункт назначения: " << destPoint << endl;
@@ -50,8 +52,11 @@ void Airbus::show()
     cout << "Время вылета: " << timeOut.hour << ":" << timeOut.minute << endl;
     cout << "День недели: " << weekday << endl;
 }
-string Airbus::getDP() { return destPoint; }
-string Airbus::getWeekday() { return weekday; }
+
+string Airbus::getDP() { return destPoint; } // геттер
+
+string Airbus::getWeekday() { return weekday; } //геттер
+
 void listDP(Airbus list[], int n)
 {
     int i;
@@ -66,6 +71,7 @@ void listDP(Airbus list[], int n)
         }
     }
 }
+
 int Airbus::menu()
 {
     system("cls");
