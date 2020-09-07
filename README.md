@@ -1,2 +1,0 @@
-# teaching
-OOP one love
