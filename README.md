@@ -1,4 +1,4 @@
 # teaching
 OOP one love
 
-Code in <bold>/3sem/</bold>
+Code in <b>/3sem/</b>
