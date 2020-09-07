@@ -1,16 +1,9 @@
 #include <iostream>
-#include <Windows.h>
 #include <locale>
+#include <Windows.h>
 #include <cassert>
 #include <cstring>
 using namespace std;
-
-//  Пункт назначения, Номер рейса, Тип самолета, Время вылета, Дни недели.
-
-// Aeroflot: Пункт назначения, Номер рейса, Тип самолета, Время вылета, Дни недели. Создать массив объектов. Вывести:
-// а) список рейсов для заданного пункта назначения; +
-// б) список рейсов для заданного дня недели;
-// в) список рейсов для заданного дня недели, время вылета для которых больше заданного.
 
 struct timeS
 {
@@ -94,7 +87,8 @@ void listWD(Airbus list[], int n)
 
     cout << "Введите день недели: ";
     cin >> DP;
-
+    cout << endl
+         << endl;
     for (i = 0; i < n; i++)
     {
         if (list[i].GetWeekday() == DP)
@@ -108,20 +102,22 @@ void listWD(Airbus list[], int n)
 void listTime(Airbus list[], int n)
 {
     int i;
-    string DP;
+    string WD;
     timeS timeMore;
 
     cout << "\nCписок рейсов для заданного дня недели, время вылета для которых больше заданного." << endl;
 
     cout << "Введите день недели: ";
-    cin >> DP;
+    cin >> WD;
     cout << "Введите время вылета\nЧасы: ";
     cin >> timeMore.hour;
     cout << "Минуты: ";
     cin >> timeMore.minute;
+    cout << endl
+         << endl;
     for (i = 0; i < n; i++)
     {
-        if (list[i].GetWeekday() == DP)
+        if (list[i].GetWeekday() == WD && (list[i].GetTime().hour > timeMore.hour && list[i].GetTime().minute > timeMore.minute))
         {
             cout << "==============================" << endl;
             list[i].show();
@@ -131,13 +127,12 @@ void listTime(Airbus list[], int n)
 
 int main()
 {
+    setlocale(LC_ALL, "Russian");
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-    setlocale(LC_ALL, "Russian");
 
     Airbus *list;
     int n;
-    string DP;
     cout << "Введите кол-во рейсов: ";
     cin >> n;
     list = new Airbus[n];
@@ -150,6 +145,8 @@ int main()
 
     listDP(list, n);
     listWD(list, n);
+    listTime(list, n);
+    delete[] list;
 
     return 0;
 }
