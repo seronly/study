@@ -1,4 +1,7 @@
-# teaching
+# Study repository by SerOnly
+Student of TUSUR, FCS
+
+
 OOP one love
 
-Code in <b>/3sem/</b>
+All files in <b>/3sem/</b>
