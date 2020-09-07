@@ -31,8 +31,8 @@
 *.out
 *.app
 
-.vscode
+
 *.docx
 *.png
 vc*.pdb
-.gitignore
+
