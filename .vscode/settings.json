@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "iostream": "cpp"
+    },
+    "files.exclude": {
+        "vc*.pdb": true,
+        "README.md": true,
+        ".vscode": true,
+        ".gitignore": true
+    }
+}
