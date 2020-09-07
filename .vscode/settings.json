@@ -6,7 +6,7 @@
         "vc*.pdb": true,
         "README.md": true,
         ".vscode": true,
-      ".gitignore": true,
-      "Philosophy":  true
+        ".gitignore": true,
+        "*/Philosophy/**": true
     }
 }
