@@ -7,7 +7,7 @@
         "README.md": true,
         ".vscode": true,
         ".gitignore": true,
-        "*/Philosophy/**": true,
-        "**/~*.*": true
+        "**/~*.*": true,
+        "**/*.docx": true
     }
 }
