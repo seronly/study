@@ -8,6 +8,7 @@
         ".vscode": true,
         ".gitignore": true,
         "**/~*.*": true,
+        "**/*.png": true,
         "**/*.docx": true
     }
 }
