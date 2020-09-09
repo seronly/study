@@ -15,8 +15,8 @@ struct date
     int year, month, day;
 };
 
-template <class int_type>
-int_type days_left(int_type year, int_type month, int_type day)
+template <class T>
+T days_left(T year, T month, T day)
 {
     int n = 0;
     switch (month)
@@ -25,65 +25,7 @@ int_type days_left(int_type year, int_type month, int_type day)
         n = 31;
         break;
     case 2:
-        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) // високосный год или нет
-            n = 29;
-        else
-            n = 28;
-        break;
-    case 3:
-        n = 31;
-        break;
-    case 4:
-        n = 30;
-        break;
-    case 5:
-        n = 31;
-        break;
-    case 6:
-        n = 30;
-        break;
-    case 7:
-        n = 31;
-        break;
-    case 8:
-        n = 31;
-        break;
-    case 9:
-        n = 30;
-        break;
-    case 10:
-        n = 31;
-        break;
-    case 11:
-        n = 30;
-        break;
-    case 12:
-        n = 31;
-        break;
-    default:
-        break;
-    }
-
-    return (n - day);
-}
-
-template <class int_type>
-int_type days_left(int_type month, int_type day)
-{
-    time_t t;
-    struct tm *timeN;
-    time(&t);
-    timeN = localtime(&t);
-    int year = timeN->tm_year + 1900;
-
-    int n = 0;
-    switch (month)
-    {
-    case 1:
-        n = 31;
-        break;
-    case 2:
-        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) // високосный год или нет
+        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
             n = 29;
         else
             n = 28;
@@ -131,21 +73,26 @@ int main()
     SetConsoleOutputCP(1251);
     setlocale(LC_ALL, "Russian");
 
-    date data1, data2;
+    date data;
+    int year, month, day;
 
-    cout << "¬ведите день: ";
-    cin >> data1.day;
+    cout << "ѕерегрузка функции дл€ структуры: \n¬ведите год: ";
+    cin >> data.year;
     cout << "ћес€ц: ";
-    cin >> data1.month;
-    cout << "√од: ";
-    cin >> data1.year;
+    cin >> data.month;
+    cout << "ƒень: ";
+    cin >> data.day;
+    cout << "ƒо конца мес€ца осталось: " << days_left(data.year, data.month, data.day) << " дней\n"
+         << endl;
 
-    cout << "ƒо конца мес€ца осталось: " << days_left(data1.year, data1.month, data1.day) << " дней" << endl;
-    cout << "\n¬ведите день: ";
-    cin >> data2.day;
+    cout << "ѕерегрузка функции с 3 параметрами: \n¬ведите год: ";
+    cin >> year;
     cout << "ћес€ц: ";
-    cin >> data2.month;
-    cout << "ƒо конца мес€ца осталось: " << days_left(data2.month, data2.day) << " дней" << endl;
+    cin >> month;
+    cout << "ƒень: ";
+    cin >> day;
+    cout << "ƒо конца мес€ца осталось: " << days_left(year, month, day) << " дней\n"
+         << endl;
 
     return 0;
 }
