@@ -17,7 +17,7 @@ struct Staffs
 } sf;
 struct Staffs person[100];
 struct Staffs temp;
-int counter = 0;
+int counter = 0; //глобальная переменная - счетчик
 
 int menu()
 {
@@ -35,6 +35,7 @@ int menu()
 	cin >> enter;
 	return enter;
 }
+
 void input()
 {
 	system("cls");
@@ -59,6 +60,7 @@ void input()
 		cout << "Добавлено максимальное кол-во сотрудников!" << endl;
 	system("pause");
 }
+
 void sort()
 {
 	system("cls");
@@ -77,6 +79,7 @@ void sort()
 	cout << "Сортировка прошла успешно!\n";
 	system("pause");
 }
+
 void find()
 {
 	system("cls");
@@ -111,6 +114,7 @@ void find()
 	}
 	system("pause");
 }
+
 void change()
 {
 	system("cls");
@@ -121,12 +125,10 @@ void change()
 	do
 	{
 		system("cls");
-		cout << person[num - 1].surname << " "
-			 << person[num - 1].name << " "
-			 << person[num - 1].patrname << " "
-			 << "Должность: " << person[num - 1].pos << " "
-			 << person[num - 1].year << "г. "
-			 << "З/п: " << person[num - 1].zarpl << " руб." << endl;
+		cout << person[num - 1].surname << " " << person[num - 1].name << " " << person[num - 1].patrname << " "
+			 << "Должность: " << person[num - 1].pos << " " << person[num - 1].year << "г. "
+			 << "З/п: " << person[num - 1].zarpl << " руб."
+			 << endl;
 		cout << "-------------------------------------------" << endl;
 		cout << "\t\tИзменить" << endl;
 		cout << "-------------------------------------------" << endl;
@@ -173,6 +175,7 @@ void change()
 	} while (true);
 	system("pause");
 }
+
 void del()
 {
 	system("cls");
@@ -186,6 +189,7 @@ void del()
 	counter--;
 	cout << "Данные успешно удалены!\nСотрудников: " << counter;
 }
+
 void output()
 {
 	system("cls");
@@ -208,6 +212,7 @@ void output()
 	}
 	system("pause");
 }
+
 int main()
 {
 	SetConsoleCP(1251);
