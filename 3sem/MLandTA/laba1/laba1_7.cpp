@@ -11,13 +11,60 @@ int main()
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
     setlocale(LC_ALL, "Russian");
-    int A, B, checkInt;
+    int A, B, D, checkInt = 0, num = 8;
     bool checkBool;
-    int *result = new int[10];
-    string Hline = "------------------------------------------------";
+    string Hline = "-----------------------------------------------------------------------------------------";
     cout
-        << "A\tB\tD\tD=>B\t(D=>B)||A" << endl;
+        << "|\tA\t|\tB\t|\tD\t|\tD=>B\t|\t(D=>B)||A\t|" << endl;
     cout << Hline << endl;
+    for (int i = 0; i < num; i++)
+    {
+        //построение таблицы для A
+        if (i >= (num / 2))
+        {
+            A = 1;
+        }
+        else
+        {
+            A = 0;
+        }
+        //построение таблицы для B
+        if (checkInt == 2 || checkInt == 3)
+        {
+            B = 1;
+            checkInt++;
+            if (checkInt == 4)
+            {
+                checkInt = 0;
+            }
+        }
+        else
+        {
+            B = 0;
+            checkInt++;
+        }
+        //построение таблицы для D
+        if (i % 2 == 0 || i == 0)
+        {
+            D = 0;
+        }
+        else
+        {
+            D = 1;
+        }
+        //построение таблицы для D=>B
+        if (D == 1 && B == 0)
+        {
+            checkBool = false;
+        }
+        else
+        {
+            checkBool = true;
+        }
 
+        cout
+            << "|\t" << A << "\t|\t" << B << "\t|\t" << D << "\t|\t" << checkBool << "\t|\t" << (checkBool || A) << "\t\t|" << endl;
+        cout << Hline << endl;
+    }
     return 0;
 }
