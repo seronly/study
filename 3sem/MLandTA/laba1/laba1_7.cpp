@@ -86,7 +86,6 @@ int main()
     else if (checkF == true && checkT == false)
     {
         cout << "Формула не выполнима при любом значении." << endl;
-        l
     }
     return 0;
 }
