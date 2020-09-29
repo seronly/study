@@ -19,6 +19,7 @@ template <class T>
 T days_left(T year, T month, T day)
 {
     int n = 0;
+    // определение количества дней
     switch (month)
     {
     case 1:
@@ -63,7 +64,6 @@ T days_left(T year, T month, T day)
     default:
         break;
     }
-
     return (n - day);
 }
 
@@ -72,7 +72,6 @@ int main()
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
     setlocale(LC_ALL, "Russian");
-
     date data;
     int year, month, day;
 
