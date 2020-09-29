@@ -9,7 +9,7 @@ struct timeS
 {
     int hour, minute;
 };
-class Airbus
+class Aeroflot
 {
     string destPoint;
     int number;
@@ -18,14 +18,14 @@ class Airbus
     string weekday;
 
 public:
-    Airbus();
+    Aeroflot();
     void show();
     string GetDP();
     string GetWeekday();
     timeS GetTime();
 };
 
-Airbus::Airbus() //конструктор
+Aeroflot::Aeroflot() //конструктор
 {
     system("cls");
 
@@ -45,7 +45,7 @@ Airbus::Airbus() //конструктор
     cin >> weekday;
 }
 
-void Airbus::show()
+void Aeroflot::show()
 {
     cout << "Пункт назначения: " << destPoint << endl;
     cout << "Номер рейса: " << number << endl;
@@ -54,13 +54,13 @@ void Airbus::show()
     cout << "День недели: " << weekday << endl;
 }
 
-string Airbus::GetDP() { return destPoint; } // геттер
+string Aeroflot::GetDP() { return destPoint; } // геттер
 
-string Airbus::GetWeekday() { return weekday; } //геттер
+string Aeroflot::GetWeekday() { return weekday; } //геттер
 
-timeS Airbus::GetTime() { return timeOut; } //геттер
+timeS Aeroflot::GetTime() { return timeOut; } //геттер
 
-void listDP(Airbus list[], int n)
+void listDP(Aeroflot list[], int n)
 {
     cout << "\nCписок рейсов для заданного пункта назначения" << endl;
 
@@ -78,7 +78,7 @@ void listDP(Airbus list[], int n)
     }
 }
 
-void listWD(Airbus list[], int n)
+void listWD(Aeroflot list[], int n)
 {
     int i;
     string DP;
@@ -99,7 +99,7 @@ void listWD(Airbus list[], int n)
     }
 }
 
-void listTime(Airbus list[], int n)
+void listTime(Aeroflot list[], int n)
 {
     int i;
     string WD;
@@ -131,11 +131,11 @@ int main()
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 
-    Airbus *list;
+    Aeroflot *list;
     int n;
     cout << "Введите кол-во рейсов: ";
     cin >> n;
-    list = new Airbus[n];
+    list = new Aeroflot[n];
 
     for (int i = 0; i < n; i++)
     {
