@@ -12,7 +12,7 @@ int main()
     SetConsoleOutputCP(1251);
     setlocale(LC_ALL, "Russian");
     int A, B, D, checkInt = 0, num = 8;
-    bool checkBool;
+    bool checkBool, checkT = true, checkF = true;
     string Hline = "-----------------------------------------------------------------------------------------";
     cout
         << "|\tA\t|\tB\t|\tD\t|\tD=>B\t|\t(D=>B)||A\t|" << endl;
@@ -65,6 +65,28 @@ int main()
         cout
             << "|\t" << A << "\t|\t" << B << "\t|\t" << D << "\t|\t" << checkBool << "\t|\t" << (checkBool || A) << "\t\t|" << endl;
         cout << Hline << endl;
+        if ((checkBool || A) == 1)
+        {
+            checkF = false;
+        }
+        else
+        {
+            checkT = false;
+        }
+    }
+
+    if (checkT == false && checkF == false)
+    {
+        cout << "‘ормула выполнима, но не €вл€етс€ тождественно истинной." << endl;
+    }
+    else if (checkT == true && checkF == false)
+    {
+        cout << "‘ормула общезначима, т.к. истина при любом значении." << endl;
+    }
+    else if (checkF == true && checkT == false)
+    {
+        cout << "‘ормула не выполнима при любом значении." << endl;
+        l
     }
     return 0;
 }
