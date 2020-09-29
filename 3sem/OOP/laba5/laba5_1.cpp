@@ -4,6 +4,10 @@
 #include <cassert>
 using namespace std;
 
+class Cstr
+{
+};
+
 int main()
 {
     SetConsoleCP(1251);
