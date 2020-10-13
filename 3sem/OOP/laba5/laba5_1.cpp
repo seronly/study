@@ -14,10 +14,9 @@ public:
     Cstr()
     {
         cout << "¬ведите первую строку: ";
-        Cstr first = new Cstr &;
-        getline(cin, first);
+        getline(cin, one);
         cout << "¬ведите втору строку: ";
-        getline(cin, two)
+        getline(cin, two);
     }
     Cstr(const Cstr &, Cstr one)
     {
