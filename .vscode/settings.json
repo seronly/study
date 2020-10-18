@@ -2,7 +2,7 @@
     "files.associations": {
         "iostream": "cpp",
         "xstring": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
     },
     "files.exclude": {
         "vc*.pdb": true,
