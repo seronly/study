@@ -31,7 +31,7 @@
 *.out
 *.app
 
-.vscode
+*.vscode*
 .vs
 *.docx
 *.png
