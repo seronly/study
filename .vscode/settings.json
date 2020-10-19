@@ -4,13 +4,14 @@
         "xstring": "cpp",
         "ostream": "cpp"
     },
-    "files.exclude": {
-        "vc*.pdb": true,
-        "README.md": true,
-        ".vscode": true,
-        ".gitignore": true,
-        "**/~*.*": true,
-        "**/*.png": true,
-        "**/*.docx": true
-    }
+  "files.exclude": {
+    "vc*.pdb": true,
+    "README.md": true,
+    ".vscode": true,
+    ".vs": true,
+    ".gitignore": true,
+    "**/~*.*": true,
+    "**/*.png": true,
+    "**/*.docx": true
+  }
 }
