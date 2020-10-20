@@ -31,8 +31,9 @@
 *.out
 *.app
 
-
-*.docx
+*.vscode*
+.vs
+##*.docx
 *.png
 vc*.pdb
 ~*.*
