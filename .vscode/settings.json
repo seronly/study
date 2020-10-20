@@ -1,9 +1,9 @@
 {
-    "files.associations": {
-        "iostream": "cpp",
-        "xstring": "cpp",
-        "ostream": "cpp",
-    },
+  "files.associations": {
+    "iostream": "cpp",
+    "xstring": "cpp",
+    "ostream": "cpp",
+  },
   "files.exclude": {
     "vc*.pdb": true,
     "README.md": true,
@@ -12,6 +12,6 @@
     ".gitignore": true,
     "**/~*.*": true,
     "**/*.png": true,
-    "**/*.docx": true
+    "**/*.docx": true,
   }
 }
