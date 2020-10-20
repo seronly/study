@@ -33,7 +33,7 @@
 
 *.vscode*
 .vs
-*.docx
+##*.docx
 *.png
 vc*.pdb
 ~*.*
