@@ -26,7 +26,34 @@ Str Str::operator++()
 };
 Str Str::operator--()
 {
-    cout << "Оператор --" << endl;
+    bool check = true;
+    string temp, temp_min;
+    char buf[] = {' ', ',', '.', '!', '?', ':', ';', '"'};
+    for (int i = 0; i < a.length() + 1; i++)
+    {
+        for (int j = 0; j < sizeof(buf); j++)
+        {
+            if (a[i] == buf[j])
+            {
+                check = false;
+                if ((temp.length() < temp_min.length() || temp_min.length() == 0) && temp.length() > 0)
+                {
+                    temp_min = temp;
+                }
+            }
+        }
+        if (check)
+        {
+            temp += a[i];
+        }
+        else
+        {
+            temp.clear();
+            check = true;
+        }
+    }
+
+    cout << "Самое короткое слово: " << temp_min << endl;
 };
 
 int main()
@@ -35,7 +62,7 @@ int main()
     SetConsoleOutputCP(1251);
     setlocale(LC_ALL, "Russian");
     Str A, B, C;
-    A.a = "Hello, world!";
+    A.a = "Hello, my world!";
     B = A;
     B.show();
     ++B;
