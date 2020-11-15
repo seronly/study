@@ -1,5 +1,4 @@
-#include <iostream>
-#include <Windows.h>
+п»ї#include <iostream>
 #include <locale>
 #include <cassert>
 using namespace std;
@@ -8,8 +7,8 @@ class Str
 {
 public:
     string a;
-    Str operator++(); // в заглавные
-    Str operator--(); // самое короткое слово в строке
+    Str operator++(); // РІ Р·Р°РіР»Р°РІРЅС‹Рµ
+    Str operator--(); // СЃР°РјРѕРµ РєРѕСЂРѕС‚РєРѕРµ СЃР»РѕРІРѕ РІ СЃС‚СЂРѕРєРµ
     void show()
     {
         cout << a << endl;
@@ -22,8 +21,9 @@ Str Str::operator++()
     {
         toUp[i] = toupper(a[i]);
     }
-    cout << toUp << endl;
+    cout << "Р’СЃРµ РІ С‚Сѓ Р°Рї: " << toUp << endl;
 };
+
 Str Str::operator--()
 {
     bool check = true;
@@ -53,13 +53,11 @@ Str Str::operator--()
         }
     }
 
-    cout << "Самое короткое слово: " << temp_min << endl;
+    cout << "РЎР°РјРѕРµ РєРѕСЂРѕС‚РєРѕРµ СЃР»РѕРІРѕ: " << temp_min << endl;
 };
 
 int main()
 {
-    SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
     setlocale(LC_ALL, "Russian");
     Str A, B, C;
     A.a = "Hello, my world!";

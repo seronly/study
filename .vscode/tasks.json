@@ -1,17 +1,18 @@
 {
+    "version": "2.0.0",
     "tasks": [
         {
             "type": "shell",
-            "label": "C/C++: g++.exe build active file",
-            "command": "Y:\\MinGw\\bin\\g++.exe",
+            "label": "g++ build active file",
+            "command": "/usr/bin/g++",
             "args": [
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "${fileDirname}/${fileBasenameNoExtension}"
             ],
             "options": {
-                "cwd": "${workspaceFolder}"
+                "cwd": "/usr/bin"
             },
             "problemMatcher": [
                 "$gcc"
@@ -21,6 +22,4 @@
                 "isDefault": true
             }
         }
-    ],
-    "version": "2.0.0"
-}
+    ]
