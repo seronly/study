@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <cstdlib>
 #include <locale>
 #include <cassert>
 #include <sstream>
@@ -46,7 +47,10 @@ Str Str::operator--()
 
 int main()
 {
-    setlocale(LC_ALL, "Russian");
+    setlocale(LC_ALL, "65001");
+    system("chcp 65001");
+    system("cls");
+
     Str A, B, C;
     A.a = "Hello, my world!";
     B = A;
