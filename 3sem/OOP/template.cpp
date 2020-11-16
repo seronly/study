@@ -1,20 +1,20 @@
-#include <iomanip>   // флаги ввода/вывода
-#include <fstream>   // работа с файлами
-#include <cmath>     // математика
-#include <cstring>   // строки
-#include <algorithm> // алгоритмы
+#include <iomanip>
+#include <fstream>
+#include <cmath>
+#include <cstring>
+#include <algorithm>
 
 #include <iostream>
-#include <Windows.h>
+#include <cstdlib>
 #include <locale>
 #include <cassert>
 using namespace std;
 
 int main()
 {
-    SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
-    setlocale(LC_ALL, "Russian");
+    setlocale(LC_ALL, "65001");
+    system("chcp 65001");
+    system("cls"); // РЅР° linux - clear
 
     return 0;
 }
