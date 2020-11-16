@@ -1,67 +1,48 @@
 ﻿#include <iostream>
 #include <locale>
 #include <cassert>
+#include <sstream>
 using namespace std;
 
 class Str
 {
 public:
     string a;
-    void operator++(); // в заглавные
-    void operator--(); // самое короткое слово в строке
+    Str operator++(); // в заглавные
+    Str operator--(); // самое короткое слово в строке
     void show()
     {
         cout << a << endl;
     };
-    ~Str()
-    {
-        cout << "Был вызван деструктор!" << endl;
-    }
-};
-void Str::operator++()
-{
-    char *toUp = new char[a.length() + 1];
-    for (int i = 0; i < a.length() + 1; i++)
-    {
-        toUp[i] = toupper(a[i]);
-    }
-    cout << "Все символы в заглавные: " << toUp << endl;
 };
 
-void Str::operator--()
+Str Str::operator++()
 {
-    cout << "Началосбь нахождение..." << endl;
-    bool check = true;
-    char *temp = new char[a.length()], *temp_min = new char[a.length()];
-    char buf[] = {' ', ',', '.', '!', '?', ':', ';', '"'};
+    Str toUp;
+    toUp.a = a;
     for (int i = 0; i < a.length() + 1; i++)
     {
-        for (int j = 0; j < sizeof(buf); j++)
-        {
-            if (a[i] == buf[j])
-            {
-                check = false;
-                if ((sizeof(temp) < sizeof(temp_min) || sizeof(temp_min) == 0) && sizeof(temp) > 0)
-                {
-                    temp_min = temp;
-                    cout << "В temp_min было записано " << temp << endl;
-                }
-            }
-        }
-        if (check)
-        {
-            temp += a[i];
-            cout << "Временная переменная: " << temp << endl;
-        }
-        else
-        {
-            temp = 0;
-            check = true;
-        }
+        toUp.a[i] = toupper(a[i]);
     }
+    {
+        return toUp;
+    }
+}
 
-    cout << "Самое короткое слово: " << temp_min << endl;
-};
+Str Str::operator--()
+{
+    Str k;
+    string word, min_word;
+    istringstream r(a);
+    r >> min_word;
+    while (r >> word)
+        if (min_word.size() > word.size())
+            min_word = word;
+    k.a = min_word;
+    {
+        return k;
+    }
+}
 
 int main()
 {
@@ -70,9 +51,11 @@ int main()
     A.a = "Hello, my world!";
     B = A;
     B.show();
-    ++B;
-    C = A;
-    --C;
-
+    C = ++B;
+    cout << "Все строки в заглавные: ";
+    C.show();
+    C = --B;
+    cout << "Самое короткое слово в строке: ";
+    C.show();
     return 0;
 }
