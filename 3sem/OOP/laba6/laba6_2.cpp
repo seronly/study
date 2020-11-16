@@ -13,6 +13,10 @@ public:
     {
         cout << a << endl;
     };
+    ~Str()
+    {
+        cout << "Был вызван деструктор!" << endl;
+    }
 };
 Str Str::operator++()
 {
@@ -21,13 +25,14 @@ Str Str::operator++()
     {
         toUp[i] = toupper(a[i]);
     }
-    cout << "Все в ту ап: " << toUp << endl;
+    cout << "Все символы в заглавные: " << toUp << endl;
 };
 
 Str Str::operator--()
 {
+    cout << "Началосбь нахождение..." << endl;
     bool check = true;
-    string temp, temp_min;
+    char *temp = new char[a.length()], *temp_min = new char[a.length()];
     char buf[] = {' ', ',', '.', '!', '?', ':', ';', '"'};
     for (int i = 0; i < a.length() + 1; i++)
     {
@@ -36,19 +41,21 @@ Str Str::operator--()
             if (a[i] == buf[j])
             {
                 check = false;
-                if ((temp.length() < temp_min.length() || temp_min.length() == 0) && temp.length() > 0)
+                if ((sizeof(temp) < sizeof(temp_min) || sizeof(temp_min) == 0) && sizeof(temp) > 0)
                 {
                     temp_min = temp;
+                    cout << "В temp_min было записано " << temp << endl;
                 }
             }
         }
         if (check)
         {
             temp += a[i];
+            cout << "Временная переменная: " << temp << endl;
         }
         else
         {
-            temp.clear();
+            temp = 0;
             check = true;
         }
     }
@@ -64,7 +71,8 @@ int main()
     B = A;
     B.show();
     ++B;
-    --B;
+    C = A;
+    --C;
 
     return 0;
 }
