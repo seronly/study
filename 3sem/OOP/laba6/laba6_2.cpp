@@ -7,8 +7,8 @@ class Str
 {
 public:
     string a;
-    Str operator++(); // в заглавные
-    Str operator--(); // самое короткое слово в строке
+    void operator++(); // в заглавные
+    void operator--(); // самое короткое слово в строке
     void show()
     {
         cout << a << endl;
@@ -18,7 +18,7 @@ public:
         cout << "Был вызван деструктор!" << endl;
     }
 };
-Str Str::operator++()
+void Str::operator++()
 {
     char *toUp = new char[a.length() + 1];
     for (int i = 0; i < a.length() + 1; i++)
@@ -28,7 +28,7 @@ Str Str::operator++()
     cout << "Все символы в заглавные: " << toUp << endl;
 };
 
-Str Str::operator--()
+void Str::operator--()
 {
     cout << "Началосбь нахождение..." << endl;
     bool check = true;
