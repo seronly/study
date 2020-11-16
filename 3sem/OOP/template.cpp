@@ -13,8 +13,8 @@ using namespace std;
 int main()
 {
     setlocale(LC_ALL, "65001");
-    system("chcp 65001");
-    system("cls"); // на linux - clear
+    // system("chcp 65001");
+    // system("cls");
 
     return 0;
 }
