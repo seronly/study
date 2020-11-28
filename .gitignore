@@ -40,4 +40,5 @@ vc*.pdb
 tasks.json
 launch.json
 .vscode/**/*.*
+_*/**/*.*
 
