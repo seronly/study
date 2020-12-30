@@ -16,7 +16,6 @@ public:
         cout << a << endl;
     };
 };
-
 Str Str::operator++()
 {
     Str toUp;
@@ -29,7 +28,6 @@ Str Str::operator++()
         return toUp;
     }
 }
-
 Str Str::operator--()
 {
     Str k;
@@ -44,7 +42,6 @@ Str Str::operator--()
         return k;
     }
 }
-
 int main()
 {
     setlocale(LC_ALL, "65001");
