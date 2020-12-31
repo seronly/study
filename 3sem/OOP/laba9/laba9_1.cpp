@@ -1,9 +1,3 @@
-#include <iomanip>
-#include <fstream>
-#include <cmath>
-#include <cstring>
-#include <algorithm>
-
 #include <iostream>
 #include <cstdlib>
 #include <cassert>
