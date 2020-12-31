@@ -1,0 +1,50 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    setlocale(LC_ALL, "ru");
+    system("cls");
+    string P;
+    cout << "A = {a, b, c}" << endl;
+    cout << "Введите P слово: ";
+    cin >> P;
+    cout << endl;
+    P = "*" + P;
+
+    while (true)
+    {
+        if (P[P.find("*") + 1] == 'a')
+        {
+            // P.erase(P.find("a"));
+            P.replace(P.find("*"), 2, "a*");
+            cout << P << endl;
+        }
+
+        if (P[P.find("*") + 1] == 'b')
+        {
+            //P.erase(P.find("b"));
+            P.replace(P.find("*"), 2, "a*");
+            cout << P << endl;
+        }
+
+        if (P[P.find("*") + 1] == 'c')
+        {
+            // P.erase(P.find("c"));
+            P.replace(P.find("*"), 2, "a*");
+            cout << P << endl;
+        }
+
+        if (P[P.find("*") + 1] == '\0')
+        {
+            //P.erase(P.find("*"), 1);
+            P = P + "a";
+            break;
+        }
+    }
+
+    cout << "Итог работы НАМ: " << P << endl;
+
+    return 0;
+}
