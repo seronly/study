@@ -81,7 +81,8 @@ public:
 int main()
 {
     setlocale(LC_ALL, "65001");
-    system("clear");
+    system("chcp 65001");
+    system("cls");
     Train *n1 = new CarTrain(5000000, 3);
     Train *n2 = new TankerTrain(2500000, 12);
     n1->show();
