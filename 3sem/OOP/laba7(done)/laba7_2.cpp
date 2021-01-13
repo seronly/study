@@ -110,7 +110,8 @@ public:
 int main()
 {
     setlocale(LC_ALL, "65001");
-    system("clear");
+    system("chcp 65001");
+    system("cls");
 
     TransportCompany *arr[3]{
         arr[0] = new Airplane("Москва", "Париж", 2487),

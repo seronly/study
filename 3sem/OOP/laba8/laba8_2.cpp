@@ -33,7 +33,6 @@ public:
     }
     virtual void changeCharc() = 0;
     virtual void output() = 0;
-    // virtual void setCharacter(int x, int y, string c) = 0;
 };
 
 class ColoredPoint : public Point
@@ -74,6 +73,8 @@ public:
         cin >> x;
         cout << "Y = ";
         cin >> y;
+        cout << "Цвет: ";
+        cin >> color;
     }
 };
 
@@ -96,6 +97,15 @@ public:
         endy = y2;
         type = "Линия";
     }
+    int getEndX()
+    {
+        return endx;
+    }
+    int getEndY()
+    {
+        return endy;
+    }
+
     void setLine(int x1, int y1, int x2, int y2)
     {
         x = x1;
@@ -107,6 +117,16 @@ public:
     {
         cout << endl
              << type << endl;
+        cout << "Первая точка: " << endl;
+        cout << "Х = " << x << "; Y = " << y << ";";
+        cout << endl;
+        cout << "Вторая точка: " << endl;
+        cout << "Х = " << endx << "; Y = " << endy << ";\n";
+    }
+    void output(int i)
+    {
+        cout << endl
+             << type << " " << i << endl;
         cout << "Первая точка: " << endl;
         cout << "Х = " << x << "; Y = " << y << ";";
         cout << endl;
@@ -179,27 +199,78 @@ public:
 class PolyLine : public Line
 {
 protected:
-    Line l;
+    Line *l[100];
+    int sizePoly;
 
 public:
     PolyLine()
     {
         type = "Многоугольник";
-        l.setX(1);
-        l.setY(3);
+
+        l[0] = new Line(1, 1, 4, 2);
+        l[1] = new Line(4, 2, 3, 8);
+        l[2] = new Line(3, 8, 2, 1);
+        l[3] = new Line(2, 1, 4, 6);
+        l[4] = new Line(4, 6, 1, 1);
+
+        sizePoly = 5;
+    }
+    PolyLine(int sizeN)
+    {
+        sizePoly = sizeN;
+        type = "\nМногоугольник";
+        changeCharc();
+    }
+    void changeCharc()
+    {
+        int tempX1, tempY1, tempX2, tempY2;
+        cout << "Введите точки для многоугольника: " << endl;
+        for (int i = 0; i < sizePoly; i++)
+        {
+            if (i == 0)
+            {
+                cout << "X(" << i + 1 << ") = ";
+                cin >> tempX1;
+                cout << "Y(" << i + 1 << ") = ";
+                cin >> tempY1;
+            }
+            else
+            {
+                tempX1 = tempX2;
+                tempY1 = tempY2;
+            }
+
+            if (i == sizePoly - 1)
+            {
+                tempX1 = l[i - 1]->getEndX();
+                tempY1 = l[i - 1]->getEndY();
+                tempX2 = l[0]->getX();
+                tempY2 = l[0]->getY();
+            }
+            else
+            {
+                cout << "X(" << i + 2 << ") = ";
+                cin >> tempX2;
+                cout << "Y(" << i + 2 << ") = ";
+                cin >> tempY2;
+            }
+            l[i] = new Line(tempX1, tempY1, tempX2, tempY2);
+        }
     }
     void output() override
     {
-        cout << endl
-             << type << endl;
-        cout << l.getX() << " " << l.getY() << endl;
+        cout << type << " с точками:" << endl;
+        for (int i = 0; i < sizePoly; i++)
+        {
+            l[i]->output(i + 1);
+        }
     }
 };
 
 class Picture
 {
     int n;
-    Point *arr[5];
+    Point *arr[4];
 
 public:
     Picture()
@@ -208,7 +279,8 @@ public:
         arr[0] = new ColoredPoint(1, 1, "green");
         arr[1] = new Line(1, 3, 8, 7);
         arr[2] = new ColoredLine(4, 1, 6, 8, "black");
-        arr[3] = new PolyLine;
+        arr[3] = new PolyLine(5);
+        cout << "Инициализация прошла успешно!" << endl;
     }
     void PictureInfo()
     {
@@ -230,9 +302,11 @@ public:
 int main()
 {
     setlocale(LC_ALL, "65001");
-    system("clear");
+    system("chcp 65001");
+    system("cls");
 
     Picture p;
+    cout << "Данные о фотографии:" << endl;
     p.PictureInfo();
     p.ChangeCharc();
     p.PictureInfo();

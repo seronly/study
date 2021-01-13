@@ -83,6 +83,8 @@ int main()
 {
     setlocale(LC_ALL, "65001");
     srand(time(NULL));
+    system("chcp 65001");
+    system("cls");
     IntMass a(10);
     FloatMass b(8);
     sort(a, b);
