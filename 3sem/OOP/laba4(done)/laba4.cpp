@@ -25,48 +25,48 @@ public:
     timeS GetTime();
 };
 
-Aeroflot::Aeroflot() //конструктор
+Aeroflot::Aeroflot() //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 {
     system("cls");
 
-    cout << "Введите данные для рейса"
+    cout << "Р’РІРµРґРёС‚Рµ РґР°РЅРЅС‹Рµ РґР»СЏ СЂРµР№СЃР°"
          << "\n-------------------------------------------------------- " << endl;
-    cout << "Пункт назначения: ";
+    cout << "РџСѓРЅРєС‚ РЅР°Р·РЅР°С‡РµРЅРёСЏ: ";
     cin >> destPoint;
-    cout << "Номер рейса: ";
+    cout << "РќРѕРјРµСЂ СЂРµР№СЃР°: ";
     cin >> number;
-    cout << "Тип самолета: ";
+    cout << "РўРёРї СЃР°РјРѕР»РµС‚Р°: ";
     cin >> typeAirplane;
-    cout << "Время вылета\nЧасы: ";
+    cout << "Р’СЂРµРјСЏ РІС‹Р»РµС‚Р°\nР§Р°СЃС‹: ";
     cin >> timeOut.hour;
-    cout << "Минуты: ";
+    cout << "РњРёРЅСѓС‚С‹: ";
     cin >> timeOut.minute;
-    cout << "День недели: ";
+    cout << "Р”РµРЅСЊ РЅРµРґРµР»Рё: ";
     cin >> weekday;
 }
 
 void Aeroflot::show()
 {
-    cout << "Пункт назначения: " << destPoint << endl;
-    cout << "Номер рейса: " << number << endl;
-    cout << "Тип самолета: " << typeAirplane << endl;
-    cout << "Время вылета: " << timeOut.hour << ":" << timeOut.minute << endl;
-    cout << "День недели: " << weekday << endl;
+    cout << "РџСѓРЅРєС‚ РЅР°Р·РЅР°С‡РµРЅРёСЏ: " << destPoint << endl;
+    cout << "РќРѕРјРµСЂ СЂРµР№СЃР°: " << number << endl;
+    cout << "РўРёРї СЃР°РјРѕР»РµС‚Р°: " << typeAirplane << endl;
+    cout << "Р’СЂРµРјСЏ РІС‹Р»РµС‚Р°: " << timeOut.hour << ":" << timeOut.minute << endl;
+    cout << "Р”РµРЅСЊ РЅРµРґРµР»Рё: " << weekday << endl;
 }
 
-string Aeroflot::GetDP() { return destPoint; } // геттер
+string Aeroflot::GetDP() { return destPoint; } // РіРµС‚С‚РµСЂ
 
-string Aeroflot::GetWeekday() { return weekday; } //геттер
+string Aeroflot::GetWeekday() { return weekday; } //РіРµС‚С‚РµСЂ
 
-timeS Aeroflot::GetTime() { return timeOut; } //геттер
+timeS Aeroflot::GetTime() { return timeOut; } //РіРµС‚С‚РµСЂ
 
 void listDP(Aeroflot list[], int n)
 {
-    cout << "\nCписок рейсов для заданного пункта назначения" << endl;
+    cout << "\nCРїРёСЃРѕРє СЂРµР№СЃРѕРІ РґР»СЏ Р·Р°РґР°РЅРЅРѕРіРѕ РїСѓРЅРєС‚Р° РЅР°Р·РЅР°С‡РµРЅРёСЏ" << endl;
 
     int i;
     string DP;
-    cout << "Введите пункт назначения: ";
+    cout << "Р’РІРµРґРёС‚Рµ РїСѓРЅРєС‚ РЅР°Р·РЅР°С‡РµРЅРёСЏ: ";
     cin >> DP;
     for (i = 0; i < n; i++)
     {
@@ -83,9 +83,9 @@ void listWD(Aeroflot list[], int n)
     int i;
     string DP;
 
-    cout << "\nCписок рейсов для заданного дня недели" << endl;
+    cout << "\nCРїРёСЃРѕРє СЂРµР№СЃРѕРІ РґР»СЏ Р·Р°РґР°РЅРЅРѕРіРѕ РґРЅСЏ РЅРµРґРµР»Рё" << endl;
 
-    cout << "Введите день недели: ";
+    cout << "Р’РІРµРґРёС‚Рµ РґРµРЅСЊ РЅРµРґРµР»Рё: ";
     cin >> DP;
     cout << endl
          << endl;
@@ -105,13 +105,13 @@ void listTime(Aeroflot list[], int n)
     string WD;
     timeS timeMore;
 
-    cout << "\nCписок рейсов для заданного дня недели, время вылета для которых больше заданного." << endl;
+    cout << "\nCРїРёСЃРѕРє СЂРµР№СЃРѕРІ РґР»СЏ Р·Р°РґР°РЅРЅРѕРіРѕ РґРЅСЏ РЅРµРґРµР»Рё, РІСЂРµРјСЏ РІС‹Р»РµС‚Р° РґР»СЏ РєРѕС‚РѕСЂС‹С… Р±РѕР»СЊС€Рµ Р·Р°РґР°РЅРЅРѕРіРѕ." << endl;
 
-    cout << "Введите день недели: ";
+    cout << "Р’РІРµРґРёС‚Рµ РґРµРЅСЊ РЅРµРґРµР»Рё: ";
     cin >> WD;
-    cout << "Введите время вылета\nЧасы: ";
+    cout << "Р’РІРµРґРёС‚Рµ РІСЂРµРјСЏ РІС‹Р»РµС‚Р°\nР§Р°СЃС‹: ";
     cin >> timeMore.hour;
-    cout << "Минуты: ";
+    cout << "РњРёРЅСѓС‚С‹: ";
     cin >> timeMore.minute;
     cout << endl
          << endl;
@@ -133,7 +133,7 @@ int main()
 
     Aeroflot *list;
     int n;
-    cout << "Введите кол-во рейсов: ";
+    cout << "Р’РІРµРґРёС‚Рµ РєРѕР»-РІРѕ СЂРµР№СЃРѕРІ: ";
     cin >> n;
     list = new Aeroflot[n];
 

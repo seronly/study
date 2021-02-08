@@ -30,16 +30,16 @@ Per Per::operator!=(Per t)
     }
     if (check)
     {
-        cout << "Äàííûé ñèìâîë åñòü â ñòğîêå." << endl;
+        cout << "Ğ”Ğ°Ğ½Ğ½Ñ‹Ğ¹ ÑĞ¸Ğ¼Ğ²Ğ¾Ğ» ĞµÑÑ‚ÑŒ Ğ² ÑÑ‚Ñ€Ğ¾ĞºĞµ." << endl;
     }
     else
     {
-        cout << "Äàííîãî ñèìâîëà íåò â ñòğîêå." << endl;
+        cout << "Ğ”Ğ°Ğ½Ğ½Ğ¾Ğ³Ğ¾ ÑĞ¸Ğ¼Ğ²Ğ¾Ğ»Ğ° Ğ½ĞµÑ‚ Ğ² ÑÑ‚Ñ€Ğ¾ĞºĞµ." << endl;
     }
 };
 Per Per::operator%(Per t)
 {
-    cout << "Êîä ñèìâîëà " << t.b << " â ASCII: " << (int)t.b << endl;
+    cout << "ĞšĞ¾Ğ´ ÑĞ¸Ğ¼Ğ²Ğ¾Ğ»Ğ° " << t.b << " Ğ² ASCII: " << (int)t.b << endl;
 };
 void Per::strlen()
 {
@@ -48,17 +48,15 @@ void Per::strlen()
     {
         count += (int)a[i];
     }
-    cout << "Ñóììà êîäîâ ASCII âñåõ ñèìâîëîâ ïåğâîé ñòğîêè = " << count << endl;
+    cout << "Ğ¡ÑƒĞ¼Ğ¼Ğ° ĞºĞ¾Ğ´Ğ¾Ğ² ASCII Ğ²ÑĞµÑ… ÑĞ¸Ğ¼Ğ²Ğ¾Ğ»Ğ¾Ğ² Ğ¿ĞµÑ€Ğ²Ğ¾Ğ¹ ÑÑ‚Ñ€Ğ¾ĞºĞ¸ = " << count << endl;
 };
 int main()
 {
-    SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
-    setlocale(LC_ALL, "Russian");
+    setlocale(LC_ALL, "65001");
     Per str1, str2;
-    cout << "Ââåäèòå ïåğâóş ñòğîêó: ";
+    cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ¿ĞµÑ€Ğ²ÑƒÑ ÑÑ‚Ñ€Ğ¾ĞºÑƒ: ";
     getline(cin, str1.a);
-    cout << "Ââåäèòå ñèìâîë äëÿ ïîèñêà â ïåğâîé ñòğîêå è äëÿ ïåğåâîäà â êîä ASCII: ";
+    cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ ÑĞ¸Ğ¼Ğ²Ğ¾Ğ» Ğ´Ğ»Ñ Ğ¿Ğ¾Ğ¸ÑĞºĞ° Ğ² Ğ¿ĞµÑ€Ğ²Ğ¾Ğ¹ ÑÑ‚Ñ€Ğ¾ĞºĞµ Ğ¸ Ğ´Ğ»Ñ Ğ¿ĞµÑ€ĞµĞ²Ğ¾Ğ´Ğ° Ğ² ĞºĞ¾Ğ´ ASCII: ";
     cin >> str2.b;
     cout << endl;
     str1 != str2;

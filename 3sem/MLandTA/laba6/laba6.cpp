@@ -1,362 +1,315 @@
-#include <iostream>
-#include <iomanip>
+﻿#include <iostream>
+#include <string>
+#include <locale.h>
+#include <stdlib.h>
+
 using namespace std;
-#define MAX 100
 
-class perem3
+int SaveNULL(int *massiv)
 {
-    int a, b, c, i, j;
-    int table[4][8];
+	int n = 1;
 
-public:
-    perem3()
-    {
-        a = 4;
-        b = 8;
-        c = 0;
-        for (i = 0; i < b; i++)
-            for (j = 0; j < a; j++)
-                table[j][i] = 0;
-    }
-    void A()
-    {
-        for (i = 0; i < b; i++)
-        {
-            if (i < a / 2)
-                table[0][i] = 0;
-            else
-                table[0][i] = 1;
-        }
-    }
-    void B()
-    {
-        for (i = 0; i < b; i++)
-        {
-            if (c < 2)
-                table[1][i] = 0;
-            else
-                table[1][i] = 1;
-        }
-    }
-    void C()
-    {
-        for (i = 0; i < b; i++)
-        {
-            if (i % 2 == 0)
-                table[2][i] = 0;
-            else
-                table[2][i] = 1;
-        }
-    }
-    void insover(const int x, const int y, int new_ins)
-    {
-        table[x][y];
-    }
-    int getvalue(const int x, const int y)
-    {
-        return table[x][i];
-    }
-    int getb()
-    {
-        return b;
-    }
-    int geta()
-    {
-        return a;
-    }
-};
-class perem4
-{
-    int m, n, k = 0, i, j;
-    int table[5][16];
-
-public:
-    perem4()
-    {
-        m = 5;
-        n = 16;
-        for (i = 0; i < n; i++)
-            for (j = 0; j < m; j++)
-                table[j][i] = 0;
-    }
-    void A()
-    {
-        for (i = 0; i < n; i++)
-        {
-            if (i < m / 2)
-                table[0][i] = 0;
-            else
-                table[0][i] = 1;
-        }
-    }
-    void B()
-    {
-        for (i = 0; i < n; i++)
-        {
-            if (m < 2)
-                table[1][i] = 0;
-            else
-                table[1][i] = 1;
-            k++;
-            if (k >= 4)
-                k = 0;
-        }
-    }
-    void C()
-    {
-        k = 0;
-        for (i = 0; i < n; i++)
-        {
-            if (i % 2 == 0)
-                table[2][i] = 0;
-            else
-                table[2][i] = 1;
-            k++;
-            if (k >= 4)
-                k = 0;
-        }
-    }
-    void d()
-    {
-        k = 0;
-        for (i = 0; i < n; i++)
-        {
-            if (i % 2 == 0)
-                table[3][i] = 0;
-            else
-                table[3][i] = 1;
-        }
-    }
-    void insover(const int x, const int y, int new_ins)
-    {
-        table[x][y];
-    }
-    int getvalue(const int x, const int y)
-    {
-        return table[x][i];
-    }
-    int getm()
-    {
-        return m;
-    }
-    int getn()
-    {
-        return n;
-    }
-};
-bool lines_3, mon_3 = 1, doubleness_3 = 1, check_1_3 = 1, check_0_3;
-void show_line_3(perem3 main_table, int number)
-{
-    cout << endl;
-    int s = main_table.getb(), p = 1;
-    int temp_mas[MAX][MAX];
-    for (int i = 0; i < s; i++)
-    {
-        for (int j = 0; j < s; j++)
-            if (i == 0)
-                temp_mas[i][j] = main_table.getvalue(3, j);
-            else
-                temp_mas[i][j] = -1;
-    }
-    for (int i = 0; i < s; i++)
-    {
-        for (int j = 0; j < s - p; j++)
-        {
-            if (temp_mas[p - 1][j] != temp_mas[p - 1][j + 1])
-                temp_mas[p][j] = 1;
-            else
-                temp_mas[p][j] = 0;
-        }
-        p++;
-    }
-
-    p = 0;
-    //треугольник паскаля
-    cout << endl
-         << "f" << number << ":" << endl;
-    for (int i = 0; i < s; i++)
-    {
-        cout << main_table.getvalue(3, i) << " -";
-        for (int h = 0; h < p; h++)
-            cout << " ";
-        for (int j = 0; j < s; j++)
-        {
-            if (temp_mas[i][j] != -1)
-                cout << " " << temp_mas[i][j];
-        }
-        p++;
-        cout << endl;
-    }
-    int max = 0, g;
-    for (int i = 0; i < s; i++)
-    {
-        if (main_table.getvalue(0, i) == 1 && temp_mas[i][0] == 1)
-        {
-            g = main_table.getvalue(0, i) + main_table.getvalue(1, i) + main_table.getvalue(2, i);
-            if (g > max)
-                max = g;
-        }
-        cout << "f" << number << " - " << max << endl;
-        if (g <= 1)
-        {
-            cout << "f" << number << "lineina" << endl;
-            lines_3 = 1;
-        }
-        else
-        {
-            cout << "f" << number << "ne lineina" << endl;
-        }
-        for (int i = 0; i < s - 1; i++)
-        {
-
-            if (temp_mas[i][0] >= temp_mas[i + 1][0])
-                mon_3 = 0;
-        }
-        if (mon_3)
-            cout << "f" << number << " " << endl;
-        else
-            cout << "f" << number << " " << endl;
-
-        for (int i = 0; i < s; i++)
-        {
-            if (temp_mas[i][0] == temp_mas[s - i][0])
-                doubleness_3 = 0;
-        }
-        if (doubleness_3)
-            cout << "f" << number << "samodvoisvennost`" << endl;
-
-        else
-            cout << "f" << number << "ne samodvoisvennost`" << endl;
-
-        if (main_table.getvalue(3, 0) != 0)
-            check_0_3 = 0;
-        if (main_table.getvalue(3, s - 1) != 1)
-            check_1_3 = 0;
-        cout << "f" << number << " ";
-        if (check_0_3)
-            cout << "save 0";
-        else
-            cout << "not case 0";
-        if (check_1_3)
-            cout << "save 1";
-        else
-            cout << "not case 1";
-        cout << endl;
-    }
-}
-bool lines_4 = 1, mon_4 = 1, doubleness_4 = 1, check_1_4 = 1, check_0_4 = 1;
-void show_line_4(perem4 main_table, int number)
-{
-    cout << endl;
-    int s = main_table.getn(), p = 1;
-    int temp_mas[MAX][MAX];
-
-    for (int i = 0; i < s; i++)
-    {
-        for (int j = 0; j < s; j++)
-        {
-            if (i == 0)
-                temp_mas[i][j] = main_table.getvalue(4, j);
-            else
-                temp_mas[i][j] = -1;
-        }
-    }
-
-    for (int i = 0; i < s; i++)
-    {
-        for (int j = 0; j < s - p; j++)
-        {
-            if (temp_mas[p - 1][j] != temp_mas[p - 1][j + 1])
-                temp_mas[p][j] = 1;
-            else
-                temp_mas[p][j] = 0;
-        }
-        p++;
-    }
-
-    p = 0;
-
-    cout << endl
-         << "Треугольник Паскаля для функции" << number << ":" << endl;
-
-    for (int i = 0; i < s; i++)
-    {
-        cout << main_table.getvalue(4, i) << " -";
-        for (int l = 0; l < p; l++)
-            cout << " ";
-        for (int j = 0; j < s; j++)
-        {
-            if (temp_mas[i][j] != -1)
-                cout << " " << temp_mas[i][j];
-        }
-        p++;
-        cout << endl;
-    }
-    int max = 0, g;
-    for (int i = 0; i < s; i++)
-        if (main_table.getvalue(4, i) == 1 && temp_mas[i][0] == 1)
-        {
-            g = main_table.getvalue(0, i) + main_table.getvalue(i, i) + main_table.getvalue(2, i) + main_table.getvalue(3, i);
-            if (g > max)
-                max = g;
-        }
-    cout << "Степень функции f" << number << " - " << max << endl;
-    if (g <= 1)
-    {
-        cout << "Функция f" << number << " линейна." << endl;
-        lines_4 = 1;
-    }
-    else
-    {
-        cout << "Функция f" << number << " нелинейна." << endl;
-        lines_4 = 0;
-    }
-    for (int i = 0; i < s - 1; i++)
-    {
-        if (temp_mas[i][0] >= temp_mas[i + 1][0])
-            mon_4 = 0;
-    }
-    if (mon_4)
-        cout << "Функция f" << number << " монотонна." << endl;
-    else
-        cout << "Функция f" << number << " не монотонна." << endl;
-
-    for (int i = 0; i < s; i++)
-    {
-        if (temp_mas[i][0] == temp_mas[s - i][0])
-            doubleness_4 = 0;
-    }
-    if (doubleness_4)
-        cout << "Функция f" << number << " самодвойственна." << endl;
-    else
-        cout << "Функция f" << number << " не самодвойстенна." << endl;
-    if (main_table.getvalue(4, 0) != 0)
-        check_0_4 = 0;
-    if (main_table.getvalue(4, s - 1) != 1)
-        check_1_4 = 0;
-
-    cout << "Функция f" << number << " ";
-    if (check_0_4)
-        cout << " сохраняет нули,";
-    else
-        cout << " не сохраняет нули,";
-    if (check_1_4)
-        cout << " сохраняет единицы." << endl;
-    else
-        cout << " не сохраняет единицы." << endl;
+	if (massiv[0] == 1)
+		n = 0;
+	return (n);
 }
 
-int main(void)
+int SaveONE(int *massiv)
 {
-    system("chcp 65001");
-    system("cls");
-    perem4 first;
-    first.A();
-    first.B();
-    first.C();
-    first.d();
+	int n = 1;
 
-    show_line_4(first, 5);
+	if (massiv[16] == 1)
+		n = 1;
+	return (n);
+}
 
-    return 0;
+int *GetF1(int *massiv1)
+{
+	bool F1, A = false, B = false, C = false, D = false;
+	int m = 0, massiv[16];
+
+	for (unsigned int i = 0; i < 2; i++)
+	{
+		for (unsigned int j = 0; j < 2; j++)
+		{
+			for (unsigned int k = 0; k < 2; k++)
+			{
+				for (unsigned int n = 0; n < 2; n++)
+				{
+					F1 = A;
+					if (F1 == true)
+					{
+						massiv1[m] = 1;
+						m++;
+					}
+					else
+					{
+						massiv1[m] = 0;
+						m++;
+					}
+					D = !D;
+				}
+				C = !C;
+			}
+			B = !B;
+		}
+		A = !A;
+	}
+	return (massiv1);
+}
+
+int *GetF2(int *massiv2)
+{
+	bool F2, A = false, B = false, C = false, D = false;
+	int m = 0, massiv[16];
+
+	for (unsigned int i = 0; i < 2; i++)
+	{
+		for (unsigned int j = 0; j < 2; j++)
+		{
+			for (unsigned int k = 0; k < 2; k++)
+			{
+				for (unsigned int n = 0; n < 2; n++)
+				{
+					F2 = !A * !B * D + A * B * !D + A * C;
+					if (F2 == true)
+					{
+						massiv2[m] = 1;
+						m++;
+					}
+					else
+					{
+						massiv2[m] = 0;
+						m++;
+					}
+					D = !D;
+				}
+				C = !C;
+			}
+			B = !B;
+		}
+		A = !A;
+	}
+	return (massiv2);
+}
+
+int *GetF3(int *massiv3)
+{
+	bool F3, A = false, B = false, C = false, D = false;
+	int m = 0;
+
+	for (unsigned int i = 0; i < 2; i++)
+	{
+		for (unsigned int j = 0; j < 2; j++)
+		{
+			for (unsigned int k = 0; k < 2; k++)
+			{
+				for (unsigned int n = 0; n < 2; n++)
+				{
+					F3 = !A * !B * !C * !D + !A * !B * !C * D + !A * B * !C * !D + !A * B * C * D + A + !B + C + !D;
+					if (F3 == true)
+					{
+						massiv3[m] = 1;
+						m++;
+					}
+					else
+					{
+						massiv3[m] = 0;
+						m++;
+					}
+					D = !D;
+				}
+				C = !C;
+			}
+			B = !B;
+		}
+		A = !A;
+	}
+	return (massiv3);
+}
+
+int Mono(int *massiv)
+{
+	int n = 1;
+	for (int i = 0; i < 15; i++)
+	{
+		if (massiv[i + 1] < massiv[i])
+		{
+			n *= 0;
+		}
+	}
+	return (n);
+}
+
+int Samdv(int *massiv)
+{
+	int n = 1, m = 15;
+
+	for (int i = 0; i < 8; i++)
+	{
+		if (massiv[i] != massiv[i + m])
+		{
+			m -= 2;
+		}
+		else
+		{
+			n = n * 0;
+			m -= 2;
+		}
+	}
+	return n;
+}
+
+int Line(int *massiv)
+{
+	int n = 1, i, j = 1, Pasc[16];
+
+	for (i = 0; i < 16; i++)
+		Pasc[i] = massiv[i];
+
+	for (j = 1; j < 16; j++)
+	{
+		for (i = 0; i < 16 - j; i++)
+		{
+			if (Pasc[i] != Pasc[i + 1])
+				Pasc[i + 1] = 1;
+			else
+				Pasc[i + 1] = 0;
+		}
+	}
+	for (i = 0; i < 16; i++)
+	{
+		if ((Pasc[i] == 1) && ((i == 0) || (i == 1) || (i == 2) || (i == 4) || (i == 8)))
+			n *= 1;
+		else
+		{
+			if (Pasc[i] == 1)
+			{
+				n *= 0;
+			}
+		}
+	}
+	return n;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "65001");
+	system("chcp 65001");
+	system("cls");
+	bool F1, F2, F3, A = false, B = false, C = false, D = false, Post = true;
+	int i, massiv1[16], massiv2[16], massiv3[16];
+	int check1[5], check2[5], check3[5];
+
+	F1 = A * B * C * !D + !A * B * C * D + A * D;
+	F2 = !A * !B * D + A * B * !D + A * C;
+	F3 = (0, 1, 4, 7, 10);
+
+	GetF1(massiv1);
+	GetF2(massiv2);
+	GetF3(massiv3);
+
+	check1[0] = Mono(massiv1);
+	check2[0] = Mono(massiv2);
+	check3[0] = Mono(massiv3);
+
+	check1[1] = SaveNULL(massiv1);
+	check2[1] = SaveNULL(massiv2);
+	check3[1] = SaveNULL(massiv3);
+
+	check1[2] = SaveONE(massiv1);
+	check2[2] = SaveONE(massiv2);
+	check3[2] = SaveONE(massiv3);
+
+	check1[3] = Samdv(massiv1);
+	check2[3] = Samdv(massiv2);
+	check3[3] = Samdv(massiv3);
+
+	check1[4] = Line(massiv1);
+	check2[4] = Line(massiv2);
+	check3[4] = Line(massiv3);
+
+	// n1 += Mono(massiv1) + SaveNULL(massiv1) + SaveONE(massiv1) + Samdv(massiv1);
+	// n2 += Mono(massiv2) + SaveNULL(massiv2) + SaveONE(massiv2) + Samdv(massiv2);
+	// n3 += Mono(massiv3) + SaveNULL(massiv3) + SaveONE(massiv3) + Samdv(massiv3);
+
+	// if (n1 <= 1)
+	// {
+	// 	check1[4] = 1;
+	// }
+	// else
+	// {
+	// 	check1[4] = 0;
+	// }
+	// if (n2 <= 1)
+	// {
+	// 	check2[4] = 1;
+	// }
+	// else
+	// {
+	// 	check2[4] = 0;
+	// }
+	// if (n3 <= 1)
+	// {
+	// 	check3[4] = 1;
+	// }
+	// else
+	// {
+	// 	check3[4] = 0;
+	// }
+
+	cout << "Таблицы истинности для функций:" << endl;
+	for (i = 0; i < 16; i++)
+	{
+		if (i == 0)
+			cout
+				<< "F1: ";
+		cout << massiv1[i] << " ";
+	}
+	cout << "\n";
+	for (i = 0; i < 16; i++)
+	{
+		if (i == 0)
+			cout
+				<< "F2: ";
+		cout << massiv2[i] << " ";
+	}
+	cout << "\n";
+	for (i = 0; i < 16; i++)
+	{
+		if (i == 0)
+			cout
+				<< "F3: ";
+		cout << massiv3[i] << " ";
+	}
+	cout << "\n"
+		 << endl;
+	cout << "\tM\tT0\tT1\tS\tL\n";
+	cout << "F1\t" << check1[0] << "\t" << check1[1] << "\t" << check1[2] << "\t" << check1[3] << "\t" << check1[4] << endl;
+	cout << "F2\t" << check2[0] << "\t" << check2[1] << "\t" << check2[2] << "\t" << check2[3] << "\t" << check2[4] << endl;
+	cout << "F3\t" << check3[0] << "\t" << check3[1] << "\t" << check3[2] << "\t" << check3[3] << "\t" << check3[4] << endl;
+
+	for (i = 0; i < 5; i++)
+	{
+		if (check1[i] && check2[i] && check3[i])
+		{
+			Post *= 0;
+		}
+		else
+		{
+			Post *= 1;
+		}
+	}
+
+	if (Post)
+	{
+		cout << "\nНабор функций полон." << endl;
+	}
+	else
+	{
+		cout << "\nНабор функций не полон." << endl;
+	}
+
+	system("pause");
+	return 0;
 }

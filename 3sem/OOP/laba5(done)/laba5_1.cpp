@@ -17,7 +17,7 @@ public:
         {
             ss[i] = h.ss[i];
         }
-        cout << "Âûçâàí âòîğîé êîíñòğóêòîğ (êîïèğîâàíèå)" << endl;
+        cout << "Ğ’Ñ‹Ğ·Ğ²Ğ°Ğ½ Ğ²Ñ‚Ğ¾Ñ€Ğ¾Ğ¹ ĞºĞ¾Ğ½ÑÑ‚Ñ€ÑƒĞºÑ‚Ğ¾Ñ€ (ĞºĞ¾Ğ¿Ğ¸Ñ€Ğ¾Ğ²Ğ°Ğ½Ğ¸Ğµ)" << endl;
     };
 
     const char *get_ss() const { return ss; }
@@ -38,17 +38,17 @@ public:
         }
         if (count > 0)
         {
-            cout << "Â ñòğîêå \"" << ss << "\" " << count << " ïğåäëîæåíèå(èé)" << endl;
+            cout << "Ğ’ ÑÑ‚Ñ€Ğ¾ĞºĞµ \"" << ss << "\" " << count << " Ğ¿Ñ€ĞµĞ´Ğ»Ğ¾Ğ¶ĞµĞ½Ğ¸Ğµ(Ğ¸Ğ¹)" << endl;
         }
         else
-            cout << "Ïğåäëîæåíèé íå íàéäåíî..." << endl;
+            cout << "ĞŸÑ€ĞµĞ´Ğ»Ğ¾Ğ¶ĞµĞ½Ğ¸Ğ¹ Ğ½Ğµ Ğ½Ğ°Ğ¹Ğ´ĞµĞ½Ğ¾..." << endl;
     };
 };
 Cstr::Cstr(const char *_ss)
 {
     ss = new char[strlen(_ss) + 1];
     strcpy(ss, _ss);
-    cout << "Âûçâàí ïåğâûé (îïğåäåëÿşùèé) êîíñòğóêòîğ" << endl;
+    cout << "Ğ’Ñ‹Ğ·Ğ²Ğ°Ğ½ Ğ¿ĞµÑ€Ğ²Ñ‹Ğ¹ (Ğ¾Ğ¿Ñ€ĞµĞ´ĞµĞ»ÑÑÑ‰Ğ¸Ğ¹) ĞºĞ¾Ğ½ÑÑ‚Ñ€ÑƒĞºÑ‚Ğ¾Ñ€" << endl;
 }
 
 int main()
@@ -57,10 +57,10 @@ int main()
     SetConsoleOutputCP(1251);
     setlocale(LC_ALL, "Russian");
     Cstr str1 = "Hello. World!";
-    cout << "Ñòğîêà 1: " << str1.get_ss() << endl;
+    cout << "Ğ¡Ñ‚Ñ€Ğ¾ĞºĞ° 1: " << str1.get_ss() << endl;
     Cstr str2(str1);
-    cout << "Ñòğîêà 2: " << str2.get_ss() << endl;
-    cout << "Ñëèÿíèå äâóõ ñòğîê: ";
+    cout << "Ğ¡Ñ‚Ñ€Ğ¾ĞºĞ° 2: " << str2.get_ss() << endl;
+    cout << "Ğ¡Ğ»Ğ¸ÑĞ½Ğ¸Ğµ Ğ´Ğ²ÑƒÑ… ÑÑ‚Ñ€Ğ¾Ğº: ";
     str1.strcanc(str2);
     str2.count_sentence();
 
