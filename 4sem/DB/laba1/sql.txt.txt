@@ -1,0 +1,32 @@
+CREATE DATABASE db1;
+USE db1;
+
+CREATE TABLE Students(
+ID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+FIO varchar(30) NOT NULL,
+Birthday date NOT NULL,
+NumGroup int NOT NULL
+);
+
+CREATE TABLE Groups(
+NumGroup int NOT NULL PRIMARY KEY,
+Faculty varchar(255) NOT NULL,
+Year date NOT NULL,
+IDSt int NOT NULL
+);
+
+ALTER TABLE Students ADD Gender varchar(20);
+ALTER TABLE Groups DROP Year;
+
+CREATE TABLE Fouls(
+FIO varchar(30) NOT NULL,
+Birthday date NOT NULL,
+Address varchar(255) NOT NUll,
+NumCar varchar(10) NOT NULL,
+InspectorFIO varchar(30) NOT NULL,
+Station int NOT NULL,
+FoulDate date NOT NULL
+);
+
+INSERT INTO Fouls(FIO, Birthday, Address, NumCar, InspectorFIO, Station, FoulDate) VALUES
+('Иванов О.И.', 19850420, 'Гагарина 32-7', 'А678КЕ', 'Петров О.И.', 1, 20170411);
