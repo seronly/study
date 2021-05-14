@@ -1,0 +1,49 @@
+------------
+Задание 1
+------------
+CREATE DATABASE dump;
+mysql -uroot -p1234 dump < C:\Users\seron\Desktop\study\4sem\DB\laba3\dump.sql
+USE mydb;
+
+------------
+Задание 2
+------------
+SELECT FIO, BDay FROM student WHERE Salary > 0;
+SELECT FIO, BDay FROM student WHERE NumGroup in(593,543); 
+SELECT FIO, BDay FROM student WHERE Starosta = 1 AND Salary > 0;
+SELECT FIO, BDay FROM student WHERE year(BDay) = 1995;
+SELECT FIO, BDay FROM student WHERE Pol = 'W' And Salary > 0;
+SELECT NumGroup from student Where Salary = 0; 
+SELECT BDay FROM Student Where FIO = 'Petrov P.P.';   
+SELECT Salary*12 as 'Стипендия за год' from student Where Starosta = 1;
+------------
+Задание 3
+------------
+SELECT max(Salary) as 'Максимальная', min(Salary) as 'Минимальная', avg(Salary) as 'Средняя' from student;
+SELECT Count(*) as 'Кол-во студентов без стипендии' FROM student Where Salary = 0;
+SELECT avg(Salary) as 'Средняя стипендия в группе 593' from student Where NumGroup = 593;
+SELECT Sum(Salary) as 'Сумма стипендий в группах' from student;
+SELECT NumGroup, SUM(case when Pol = 'M' then 1 else 0 end) As 'Мужчин', SUM(case when Pol='W' then 1 else 0 end) As 'Женщин' from student Group by NumGroup; 
+
+------------
+Задание 4
+------------
+CREATE TABLE Schedule(MovieName varchar(255), CinemaName varchar(255), CinemaAdress varchar(255), CinemaPhone varchar(10), SessionCost int, SessionTime time, SessionDate date);
+
+Insert Into Schedule (MovieName, CinemaName, CinemaAdress, CinemaPhone, SessionCost, SessionTime, SessionDate) VALUES ('Жизнь','Родина','Ключевская, 26', '65-63-12', 150, '10:00','2017-04-11'), ('Идиот','Горького','Ленина, 120', '52-54-59', 250, '14:00','2017.05.05'), ('Гладиатор', 'Родина', 'Ключевская, 26', '65-63-12', 300, '14:00', '2017.07.26'), ('Идиот', 'Октябрь', 'Кирова, 12', '45-25-65', 200, '10:00', '2017.03.14'), ('Жизнь', 'Горького','Ленина, 120', '52-54-59', 200, '10:00', '2017.04.11'), ('Идиот', 'Киномир', 'Белинского, 21', '68-69-89', 250, '12:00', '2017.07.11'), ('На границе', 'Киномир', 'Белинского, 21', '68-69-89', 500, '18:00', "2017.06.15"), ('На границе', 'Родина', 'Ключевская, 26', '65-63-12', 500, '20:00', '2017.07.26'); 
+
+SELECT * FROM schedule ORDER BY SessionDate;
+
+SELECT MovieName, SessionCost, SessionTime, SessionDate FROM schedule WHERE CinemaName = 'Родина';
+
+SELECT * FROM schedule WHERE MovieName = 'Жизнь';
+
+SELECT * FROM schedule WHERE YEAR(SessionDate) = '2017' AND MONTH(SessionDate) = '07';
+
+SELECT CinemaName, CinemaPhone FROM schedule WHERE CinemaName = 'Октябрь';
+UPDATE schedule SET CinemaPhone = '44-55-66' WHERE CinemaName = 'Октябрь';
+SELECT CinemaName, CinemaPhone FROM schedule WHERE CinemaName = 'Октябрь
+
+SELECT MovieName, Count(*) AS 'Количество показов' FROM schedule WHERE MovieName = 'Жизнь';
+
+SELECT CinemaName, Count(CinemaName) AS 'Кол-во сеансов' FROM schedule Group by CinemaName;
